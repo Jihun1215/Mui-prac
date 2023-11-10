@@ -1,8 +1,14 @@
 {
   "users": [
     {
-      "userNumber": 0,
-      "id": "1q2w3e4r",
+      "username": "test1234",
+      "password": "test1234",
+      "id": 1
+    }
+  ],
+  "singup": [
+    {
+      "username": "1q2w3e4r",
       "password": "1q2w3e4r@"
     }
   ]

@@ -14,20 +14,36 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import { Footer } from "../../shard/Footer";
 
+import axios from "axios";
+import { api } from "../../util/api";
+
 const theme = createTheme();
 
 export const Signin = () => {
-  const handleSubmit = (event: {
+  const handleSubmit = async (e: {
     preventDefault: () => void;
     currentTarget: HTMLFormElement | undefined;
   }) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    e.preventDefault();
+    // console.log(e);
+    const data = new FormData(e.currentTarget);
+    console.log(data);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
+    try {
+      const response = await axios.post("http://localhost:8000/users", {
+        username: data.get("email"),
+        password: data.get("password"),
+      });
+      console.log(response);
+      alert("회원가입성공");
+    } catch (error) {
+      alert("오류");
+    }
   };
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -44,7 +60,7 @@ export const Signin = () => {
             {/* <LockOutlinedIcon /> */}
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            로그인
           </Typography>
           <Box
             component="form"

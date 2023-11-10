@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { Layout } from "./Layout";
 
-import { Home } from "../Pages/Home";
-import { Signin, Signup } from "../Pages/Sign";
+import { Signin, Signup } from "Pages/Sign";
+import { Home, Mypage, Tab } from "Pages";
 
 import { App } from "../App";
 
@@ -28,6 +28,14 @@ export const router = createBrowserRouter([
       {
         element: <Layout />,
         children: [{ path: "/signin", element: <Signin /> }],
+      },
+      {
+        element: <Layout />,
+        children: [{ path: "/mypage", element: <Mypage /> }],
+      },
+      {
+        element: <Layout />,
+        children: [{ path: "/tab", element: <Tab /> }],
       },
     ],
   },
