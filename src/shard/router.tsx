@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { Layout } from "./Layout";
 
-import { Signin, Signup } from "Pages/Sign";
-import { Home, Mypage, Tab } from "Pages";
+import { Signin, Signup } from "pages/Sign";
+import { Home, Mypage, Tab } from "pages";
 
 import { App } from "../App";
 
