@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Container, Grid, Stack , Typography}  from "@mui/material";
+import { Container, Grid, Stack , Typography }  from "@mui/material";
+import { PieChart, LineChart } from '@mui/x-charts';
 
 
 // material-ui
@@ -19,6 +20,18 @@ import { Container, Grid, Stack , Typography}  from "@mui/material";
 
 
 export const Home = () => {
+const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
+const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
+const xLabels = [
+  'Page A',
+  'Page B',
+  'Page C',
+  'Page D',
+  'Page E',
+  'Page F',
+  'Page G',
+];
+
   return (
     <Container component="main" maxWidth="lg">
       <Stack sx={{ mb: 10 }} alignItems="center">
@@ -44,7 +57,20 @@ export const Home = () => {
                         alignItems: "center", 
                         justifyContent: "center",
                         boxShadow: "0px 0px 7px 0px rgba(0, 0, 0, 0.15)" }} sm={6} md={3} >
-          <p>원형 그래프</p>
+           <PieChart
+                series={[
+                     {
+                        data: [
+                         { id: 0, value: 20, label: 'series A' },
+                         { id: 1, value: 25, label: 'series B' },
+                         { id: 2, value: 50, label: 'series C' },
+                            ],
+                    },
+                         ]}
+                width={400}
+                height={200}
+                style={{cursor: "pointer"}}
+            />
           </Grid>     
 
 
@@ -68,6 +94,27 @@ export const Home = () => {
           </Grid>     
         </Group>
 
+        <Group>
+        <Grid style={{ width: "100%", 
+                        height: "400px", 
+                        display: "flex", 
+                        alignItems: "center", 
+                        justifyContent: "center",
+                        boxShadow: "0px 0px 7px 0px rgba(0, 0, 0, 0.15)" }} sm={6} md={3} >
+            
+            <LineChart
+                width={500}
+                height={300}
+                series={[
+                 { data: pData, label: 'pv' },
+                 { data: uData, label: 'uv' },
+                ]}
+                 xAxis={[{ scaleType: 'point', data: xLabels }]}
+            />
+          </Grid>     
+
+        </Group>
+
 
          </Row>
          
@@ -86,7 +133,7 @@ const Row = styled.div`
 
 const Group= styled.div`
   width: 100%;
-  height: 200px;
+  height: 400px;
   ${({theme}) => theme.FlexRow};
   align-items: center;
   justify-content: center;
